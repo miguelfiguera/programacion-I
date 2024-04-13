@@ -18,4 +18,4 @@ Todo lo bueno.
 
 #### Notas
 
-1. El codigo de typescript puede probarse aqui [Compilador online de typescript](typescriptlang.org/play)
+1. El codigo de typescript puede probarse aqui [Compilador online de typescript](https://typescriptlang.org/play)
