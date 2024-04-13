@@ -3,9 +3,9 @@ Tareas para programacion I en la UNETI
 
 ## Autor:
 
-Miguel Alejandro Figuera Quintero
-C.I:V-23.558.789
-Seccion 8B
+### Miguel Alejandro Figuera Quintero
+### C.I:V-23.558.789
+### Seccion 8B
 
 ### Descripcion.
 
@@ -14,3 +14,8 @@ Bienvenido profesor, cada Sesion didactica tiene sus actividades en su propia ca
 Espero que disfrute corregirlo, como yo disfrute aprendiendo.
 
 Todo lo bueno.
+
+
+#### Notas
+
+1. El codigo de typescript puede probarse aqui [Compilador online de typescript](typescriptlang.org/play)
