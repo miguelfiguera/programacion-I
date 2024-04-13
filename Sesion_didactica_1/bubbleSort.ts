@@ -30,3 +30,7 @@ function bubbleSort(array: number[]): number[] {
   //Retorna el array organizado
   return array;
 }
+
+
+let answer = bubbleSort([1,2,7,8,5,3,124,6,54321,3])
+console.log(answer)
