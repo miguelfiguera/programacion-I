@@ -14,9 +14,9 @@ swapped=False
     for e,idx in array (iterar sobre el array, incluyendo indices):
 
         **revisar cual es mayor entre el actual y el anterior**
-        check_mayor=e>array[i-1]
+        check_mayor=e<array[i-1]
 
-        **Si el actual es mayor cambiar uno por otro y recordar que algo cambio**
+        **Si el actual es menor cambiar uno por otro y notificar que algo cambio**
 
         if check_mayor: 
             swap(array[idx], array[idx-1])

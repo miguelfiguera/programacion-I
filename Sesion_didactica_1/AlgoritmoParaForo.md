@@ -1,4 +1,6 @@
 Inicio buena_siesta:
+    if 13 <= hora <= 19:
+        print('No es tiempo para siestas'.)
     if cama destendida:
         tender cama.
     print('Escoja la duracion en minutos (entre 30 y 60min)')

@@ -1,0 +1,28 @@
+# Miguel Figuera Quintero V-23.558.789 Seccion 8B
+
+def bubble_sort(array:list):
+    #Numero de iteraciones posibles.
+    num=len(array)
+    #Loop de primer nivel para la cantidad de iteraciones
+    for x in range(num):
+        #variable para determinar break-case
+        swapped=False
+        #loop de segundo nivel (nested loop) para cada elemento del array
+        for index,element in enumerate(array):
+            #comparar elementos y ver si el actual es menor que el anterior
+            if element < array[index-1]:
+                #intercambiar elementos con ayuda de un auixiliar(helper)
+                #para no perder la informacion
+                helper=array[index-1]
+                #el anterior obtiene al actual
+                array[index-1]=element
+                #el actual obtiene al helper
+                array[index]=helper
+                #determinar que no se cumple el break-case
+                swapped=True
+        #break-case
+        if not swapped:
+            break
+    #retornar el array ordenado
+    return array
+# Fin del proceso marcado por indentacion.
