@@ -69,7 +69,7 @@ class List:
 
     def __str__(self):
         for i,x in enumerate(self.instances):
-            print(f'key:{x.value},children: {x.children}')
+            print(f'(key:{x.value} -> children: {x.children})')
         return f'La lista contiene {self.node_count} nodos'
     
     def pop_node(self):
@@ -89,6 +89,14 @@ class List:
         self.node_count-=1
         #corrige ruptura en la cadena
         self.node_correction()
+    def insert_node(self,index,value):
+        #inserta el nodo en el indice indicado
+        self.instances.insert(index,self.create_node(value))
+        #aumenta numero de nodos
+        self.node_count+=1
+        #corrige la cadena
+        self.node_correction()
+
     
 
     
