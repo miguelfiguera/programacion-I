@@ -51,6 +51,8 @@ class List:
         #list comprehension para crear todos los nodos a partir de un array
         # y colocarlos dentro de la lista de instances.
         the_list=[self.create_node(x,array[i+1]) if i<len(array)-1 else self.create_node(x,None) for i,x in enumerate(array)]
+        self.instances=the_list
+        self.node_count=len(array)
 
     def append_new_node(self,value,children=None):
         #agrega un nuevo nodo a la lista
@@ -97,7 +99,19 @@ class List:
         #corrige la cadena
         self.node_correction()
 
+    def find(self,value):
+        answer=[]
+        #busca el valor en la lista
+        for x in self.instances:
+            if x.value==value:
+                answer.append(x)
+        #Si no hay un valor, avisa que no fue encontrado
+        if answer==[]:
+            return f'{value} not found'
+        #retorna el nodo
+        return answer[0]
+
     
 
     
-    
+array=[1,2,3,4,5,6,7,8,9,10,123,4,1235661,1233221,4368,4567,679,567,809]
