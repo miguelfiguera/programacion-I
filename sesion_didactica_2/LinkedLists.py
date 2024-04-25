@@ -98,29 +98,34 @@ class Linked_List:
     def insert_node(self,index,value):
         #inserta el nodo en el indice indicado
         self.instances.insert(index,self.create_node(value))
-        #aumenta numero de nodos
-        self.node_count+=1
         #corrige la cadena
         self.node_correction()
 
     def find(self,value):
         answer=[]
+        index=0
         #busca el valor en la lista
-        for x in self.instances:
+        for i,x in enumerate(self.instances):
             if x.value==value:
                 answer.append(x)
+                index=i
         #Si no hay un valor, avisa que no fue encontrado
         if answer==[]:
             return f'{value} not found'
         #retorna el nodo
+        print(f'{value} was found at index {index}')
+        print(f'Node: {answer[0].value} -> children: {answer[0].children}')
         return answer[0]
     def is_circular(self):
         #verifica si la lista es circular
-        if self.head.value == self.tail.children.value:
+        if self.tail.children==None:
+            print('It is not circular')
+            return
+        elif self.head.value == self.tail.children.value:
             print('It is circular')
             return True
         else:
-            ('It is not circular')
+            print('It is not circular')
             return False
     def make_me_circular(self):
         #hace la lista circular
@@ -135,3 +140,16 @@ the_list.create_nodes_list(array)
 print(the_list)
 the_list.print_head()
 the_list.print_tail()
+the_list.is_circular()
+the_list.find(4368)
+print(the_list.node_count)
+the_list.delete_node_at(0)
+the_list.print_head()
+the_list.size()
+the_list.insert_node(0,0)
+the_list.size()
+the_list.print_head()
+the_list.make_me_circular()
+print("Tail's children:",the_list.tail.children.value)
+the_list.is_circular()
+
