@@ -14,12 +14,12 @@ class Node:
 
     
 
-class List:
+class Linked_List:
 #Define el constructor de la lista y sus valores iniciales
     def __init__(self):
         self.instances=[]
-        self.head=self.instances[0]
-        self.tail=self.instances[-1]
+        self.head=None
+        self.tail=None
         self.node_count=0
     
     #Funcion para corregir en caso de que haya algun tipo
@@ -44,14 +44,18 @@ class List:
     
     def create_node(self,value,children=None):
         #crea el nodo y lo agrega a la lista
-        self.instances.append(Node(value,children))
+        node=Node(value,children)
+        self.instances.append(node)
         self.node_count+=1
+        return node
 
     def create_nodes_list(self,array):
         #list comprehension para crear todos los nodos a partir de un array
         # y colocarlos dentro de la lista de instances.
         the_list=[self.create_node(x,array[i+1]) if i<len(array)-1 else self.create_node(x,None) for i,x in enumerate(array)]
         self.instances=the_list
+        self.head=self.instances[0]
+        self.tail=self.instances[-1]
         self.node_count=len(array)
 
     def append_new_node(self,value,children=None):
@@ -64,10 +68,10 @@ class List:
     def size(self):
         print (f'La lista contiene:{self.node_count} nodos.')
     
-    def head(self):
-        print(self.head)
-    def tail(self):
-        print(self.tail)
+    def print_head(self):
+        print('Head:',self.head.value)
+    def print_tail(self):
+        print('Tail:',self.tail.value)
 
     def __str__(self):
         for i,x in enumerate(self.instances):
@@ -110,8 +114,24 @@ class List:
             return f'{value} not found'
         #retorna el nodo
         return answer[0]
-
-    
+    def is_circular(self):
+        #verifica si la lista es circular
+        if self.head.value == self.tail.children.value:
+            print('It is circular')
+            return True
+        else:
+            ('It is not circular')
+            return False
+    def make_me_circular(self):
+        #hace la lista circular
+        self.tail.children=self.head
+        return 'It is now circular'
 
     
 array=[1,2,3,4,5,6,7,8,9,10,123,4,1235661,1233221,4368,4567,679,567,809]
+
+the_list=Linked_List()
+the_list.create_nodes_list(array)
+print(the_list)
+the_list.print_head()
+the_list.print_tail()
