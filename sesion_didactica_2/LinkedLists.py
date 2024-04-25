@@ -118,9 +118,11 @@ class Linked_List:
         return answer[0]
     def is_circular(self):
         #verifica si la lista es circular
+        #guard clause
         if self.tail.children==None:
             print('It is not circular')
             return
+        #checking if head and tail's children are equal
         elif self.head.value == self.tail.children.value:
             print('It is circular')
             return True
