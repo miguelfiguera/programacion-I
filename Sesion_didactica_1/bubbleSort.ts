@@ -9,7 +9,7 @@ function bubbleSort(array: number[]): number[] {
     //variable swapped inicializada en false para controlar si hubo intercambios
     let swapped: boolean = false;
     //ciclo for de segundo nivel a traves del metodo Array.prototype.forEach()
-    array.forEach((value, index) => {
+    array.forEach((value, index): void => {
         //compara elemento actual con el siguiente y si el actual es mayor, lo intercambia
       if (index < num - 1 && value > array[index + 1]) {
         //helper para guardar valor actual
