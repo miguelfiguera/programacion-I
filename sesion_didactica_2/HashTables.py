@@ -163,6 +163,33 @@ class HashTable:
             return f'{value} not found \n'
 
 
+    def has(self,value):
+        result=self.find_node(value)
+        if result:
+            return True
+        else:
+            return False
+    
+    def length(self):
+        return self.nodes
+    
+    def delete(self,value):
+        helper=self.hash_value_for_find(value)
+        if helper is None:
+            return 'value not found'
+        self.instances[helper].delete_after_find(value)
+        self.nodes -= 1
+        print(f'{value} was deleted')
+
+
+    def clear_map(self):
+        print('HashMap has been cleared'.center(30,'~'))
+        self.instances=[]
+        self.capacity=16
+        self.load_factor=0.75
+        self.nodes=0
+        self.create_linked_lists()
+
 my_table=HashTable()
 my_table.create_linked_lists()
 print(my_table)
@@ -177,4 +204,9 @@ print(my_table)
 my_table.print_all_nodes()
 my_table.find_node('Nadia Roy')
 my_table.find_node('José Pérez')
-
+print(my_table)
+my_table.delete('Nadia Roy')
+my_table.find_node('Nadia Roy')
+print(my_table)
+my_table.clear_map()
+print(my_table)

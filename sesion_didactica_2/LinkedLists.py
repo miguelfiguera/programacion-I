@@ -137,6 +137,21 @@ class Linked_List:
         self.instances.pop()
         self.node_count -= 1
 
+    def find_index(self, value):
+        # busca el valor en la lista
+        result = None
+        for i, x in enumerate(self.instances):
+            if x.value == value:
+                result = i
+        return result
+    def delete_after_find(self, value):
+        index = self.find_index(value)
+        if index is None:
+            print(f"Value {value} not found")
+            return None
+        self.instances.pop(index)
+        self.node_correction()
+
     def delete_node_at(self, index):
         # guard clause si el indice no existe
         if index >= len(self.instances) - 1:
