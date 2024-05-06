@@ -27,9 +27,6 @@ class Node:
                 else:
                     #sale de la funcion si el numero es primo.
                     return num
-            
-                
-
     def hashing_function(self,string:str,capacity:int):
         #convierte cada letra en un valor numerico
         hashed=[ord(x) for x in string]
@@ -169,11 +166,13 @@ class Linked_List:
                 index = i
         # Si no hay un valor, avisa que no fue encontrado
         if answer == []:
-            return f"{value} not found"
+            print(f"{value} not found")
+            return None
         # retorna el nodo
-        print(f"{value} was found at index {index}")
-        print(f"Node: {answer[0].value} -> children: {answer[0].children}")
-        return answer[0]
+        else:
+            print(f"{value} was found at index {index}")
+            print(f"Node: {answer[0].value} -> children: {answer[0].children}")
+            return answer[0]
 
     def is_circular(self):
         # verifica si la lista es circular
@@ -219,20 +218,21 @@ array = [
 
 
 #Corriendo el código para probarlo.
-the_list = Linked_List()
-the_list.create_nodes_list(array)
-print(the_list)
-the_list.print_head()
-the_list.print_tail()
-the_list.is_circular()
-the_list.find(4368)
-print(the_list.node_count)
-the_list.delete_node_at(0)
-the_list.print_head()
-the_list.size()
-the_list.insert_node(0, 0)
-the_list.size()
-the_list.print_head()
-the_list.make_me_circular()
-print("Tail's children:", the_list.tail.children.value)
-the_list.is_circular()
+#the_list = Linked_List()
+#the_list.create_nodes_list(array)
+#print(the_list)
+#the_list.print_head()
+#the_list.print_tail()
+#the_list.is_circular()
+#the_list.find(4368)
+#print(the_list.node_count)
+#the_list.delete_node_at(0)
+#the_list.print_head()
+#the_list.size()
+#the_list.insert_node(0, 0)
+#the_list.size()
+#the_list.print_head()
+#the_list.make_me_circular()
+#print("Tail's children:", the_list.tail.children.value)
+#the_list.is_circular()
+#

@@ -9,6 +9,7 @@ from LinkedLists import Node
 # poblacion de muestra para trabajar
 nombres_apellidos_venezolanos = [
     "José Pérez",
+    "séJo réPez",
     "María Rodríguez",
     "Luis González",
     "Carmen Martínez",
@@ -64,7 +65,7 @@ class HashTable:
 
     
     def create_linked_lists(self):
-        for i in range(self.capacity-1):
+        for i in range(self.capacity):
             self.instances.append(Linked_List())
 
     def create_node(self,value):
@@ -105,13 +106,15 @@ class HashTable:
     
     def evaluate_load(self):
         # calcula el factor de carga
-        time_to_extend_load:bool=self.capacity*self.load_factor>=self.nodes
+        time_to_extend_load:bool=self.nodes>=int(self.capacity*self.load_factor)
         if time_to_extend_load:
+            print('Load to big'.center(30,'~'))
+            print('Reubicating Nodes'.center(30,'~'))
             # si el factor de carga fue alcanzado, aumenta la capacidad y reubica los nodos
-            self.capacity*2
+            self.capacity=self.capacity*2
             self.reubicate_nodes()
         else:
-            print('load is quite fine...currently I mean...')
+            print('\n load is quite fine...currently I mean...')
 
     def __str__(self) -> str:
         message='''
@@ -124,10 +127,13 @@ class HashTable:
 
     def print_all_nodes(self):
         #recorre cada instancia de cada bucket
-        for i in self.instances:
-            print('bucket:',i)
-            for x in i.instances:
-                print(x)
+        for i,x in enumerate(self.instances):
+            if len(x.instances)==0:
+                print('bucket:'.center(30,'*'),i,f'\n{x}\n',)
+            else:
+                print('bucket:'.center(30,'*'),i)
+            for y in x.instances:
+                print(f'{y} \n')
 
     def hash_value_for_find(self,value):
         #separa el nombre y apellido
@@ -144,23 +150,31 @@ class HashTable:
         return ((sum(hashed1)%self.capacity) + (sum(hashed2)%self.capacity))%self.capacity
     
     def find_node(self,value):
+        print(f'searching for {value}'.center(30,'.'))
         #identifica el bucket al replicar el hash del valor del nodo
         index=self.hash_value_for_find(value)
         #imprime el valor del bucket
-        print(f'At bucket {index}:')
+        print(f'At bucket {index}:'.center(30,'*'))
         #imprime el resultado
-        return self.instances[index].find(value)
+        result= self.instances[index].find(value)
+        if result:
+            return result
+        else:
+            return f'{value} not found \n'
 
 
 my_table=HashTable()
 my_table.create_linked_lists()
 print(my_table)
-#my_table.create_all_nodes(nombres_apellidos_venezolanos)
-#print(my_table)
+my_table.create_all_nodes(nombres_apellidos_venezolanos)
 #my_table.print_all_nodes()
-#my_table.find_node('José Pérez')
-#my_table.find_node('Nadia Roy')
-#my_table.create_all_nodes(names2)
-#print(my_table)
-#my_table.print_all_nodes()
-#my_table.find_node('Nadia Roy')
+print(my_table)
+#print(my_table.nodes<=int(my_table.capacity*my_table.load_factor))
+my_table.find_node('José Pérez')
+my_table.find_node('Nadia Roy')
+my_table.create_all_nodes(names2)
+print(my_table)
+my_table.print_all_nodes()
+my_table.find_node('Nadia Roy')
+my_table.find_node('José Pérez')
+
