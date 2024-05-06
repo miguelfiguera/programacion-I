@@ -1,7 +1,7 @@
 # Miguel Alejandro Figuera Quintero
 # C.I:V-23.558.789
 # Seccion 8B
-# Linked Lists - Hash Maps
+# Linked Lists for Hash Maps
 
 # Linked list
 import random
@@ -12,18 +12,32 @@ class Node:
         self.hash=None
         self.value = value
         self.children = children
+    
+    # Genera un numero primo aleatorio para el hash
+    def prime_number()->int:
+        while True:
+            num = random.randint(1, 100)
+            if num > 1:
+                #si el numero es mayor a uno, verifica si es primo.
+                #genera un rango entre 2 y la raiz cuadrada del numero
+                for i in range(2,int(num**0.5)+1):
+                    #si el numero es divisible, sale del for loop y regresa al while loop
+                    if num%i==0:
+                        break
+                else:
+                    #sale de la funcion si el numero es primo.
+                    return num
+            
+                
 
-    def prime_number(self)->int:
-        pass
-
-    def hashing_function(self,string:str):
+    def hashing_function(self,string:str,capacity:int):
         hashed=[ord(x) for x in string]
-        return sum(hashed)%16
+        return sum(hashed)%capacity
 
     #hash function with both name & surname.
-    def hash(self,value:str)->None:
-        name,surname=value.split(' ')
-        new_value=(self.hashing_function(name)+self.hashing_function(surname))%16
+    def hash(self,capacity:int)->None:
+        name,surname=self.value.split(' ')
+        new_value=(self.hashing_function(name,capacity)+self.hashing_function(surname,capacity))%capacity
         self.hash=new_value
 
 
@@ -58,6 +72,7 @@ class Linked_List:
     def create_node(self, value, children=None):
         # crea el nodo y lo agrega a la lista
         node = Node(value, children)
+        node.hashing_function(node.value)
         self.instances.append(node)
         self.node_count += 1
         return node
@@ -85,6 +100,11 @@ class Linked_List:
         # esten debidamente anclados al siguiente.
         self.node_correction()
 
+    #for hash maps only
+    def append_new_node_hash(self, node):
+        self.instances.append(node)
+        self.node_count += 1
+        self.node_correction()
     def size(self):
         print(f"La lista contiene:{self.node_count} nodos.")
 
