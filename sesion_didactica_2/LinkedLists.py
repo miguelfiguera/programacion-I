@@ -10,7 +10,7 @@ class Node:
     # Define el constructor para los nodos y sus valores iniciales.
     def __init__(self, value:str, children=None):
         self.hash=None
-        self.value = value
+        self.value:int | str = value
         self.children = children
     
     # Genera un numero primo aleatorio para el hash
@@ -31,14 +31,30 @@ class Node:
                 
 
     def hashing_function(self,string:str,capacity:int):
+        #convierte cada letra en un valor numerico
         hashed=[ord(x) for x in string]
+        #suma todos los valores numericos en el list y lo lleva a un numero entre 0 y 15
         return sum(hashed)%capacity
 
     #hash function with both name & surname.
-    def hash(self,capacity:int)->None:
-        name,surname=self.value.split(' ')
-        new_value=(self.hashing_function(name,capacity)+self.hashing_function(surname,capacity))%capacity
-        self.hash=new_value
+    def hashing(self,capacity:int=1)->None:
+        #esto es para que la linked_list siga siendo independiente
+        # y se pueda evaluar como un trabajo aparte.
+
+        #Con hashMap:
+        if type(self.value) is str:
+            name,surname=self.value.split(' ')
+            new_value=(self.hashing_function(name,capacity)+self.hashing_function(surname,capacity))%capacity
+            self.hash=new_value
+        #Independiente:
+        else:
+            self.hash=self.value%1
+
+    def __str__(self) -> str:
+        if self.children is not None:
+            return f"Node: {self.value} \n Hash: {self.hash} \n children: {self.children.value}"
+        else:
+            return f"Node: {self.value} \n Hash: {self.hash} \n children: {self.children}"
 
 
 class Linked_List:
@@ -72,7 +88,7 @@ class Linked_List:
     def create_node(self, value, children=None):
         # crea el nodo y lo agrega a la lista
         node = Node(value, children)
-        node.hashing_function(node.value)
+        node.hashing(node.value)
         self.instances.append(node)
         self.node_count += 1
         return node
