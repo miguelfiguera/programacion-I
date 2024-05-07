@@ -4,7 +4,8 @@ def bubble_sort(array:list):
     print(array)
     #Numero de iteraciones posibles.
     num=len(array)-1
-    #Loop de primer nivel para la cantidad de iteraciones
+    #Loop de primer nivel, itera de forma infinita hasta que se cumple
+    #el break-case
     while True:
         #variable para determinar break-case
         swapped=False

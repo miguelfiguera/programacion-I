@@ -18,12 +18,12 @@ Loop While True:
         for element,index in array (iterar sobre el array, incluyendo indices):
 
 
-            **revisar cual es mayor entre el actual y el anterior**
+            revisar cual es mayor entre el actual y el anterior
 
             if element mayor que array[index-1] & index != 0:
 
 
-            **Si el actual es menor cambiar uno por otro y notificar que algo cambio**
+            Si el actual es menor cambiar uno por otro y notificar que algo cambio
 
 
 
@@ -38,7 +38,9 @@ Loop While True:
 
     if cambio_alguno? == false:
 
-    salir del loop while
+    break loop while
+
+   fin if
 
 fin while (fin codigo interno, realmente ese loop es infinito)
 
