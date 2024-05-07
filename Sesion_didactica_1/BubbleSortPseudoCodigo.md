@@ -5,33 +5,51 @@ C.I:V-23.558.789
 Seccion 8B
 
 ```
-Inicio bubble_sort(array):
-leer array
-longitud= longitud del array
+iniciar proceso bubble_sort (array):
 
-loop:
-swapped=False
-    for e,idx in array (iterar sobre el array, incluyendo indices):
+lee array (debe ser de un solo tipo de dato)
 
-        **revisar cual es mayor entre el actual y el anterior**
-        check_mayor=e<array[i-1]
+lee longitud_de_array
 
-        **Si el actual es menor cambiar uno por otro y notificar que algo cambio**
+Loop While True:
 
-        if check_mayor: 
-            swap(array[idx], array[idx-1])
-            swapped=True
-        fin if
-    fin for
-    *** si no hay ningun cambio de posicion en la iteracion actual, romple el loop***
-    break if swapped==False
-fin loop
+    cambio_alguno? = false
 
-print('sorted array',array)
+        for element,index in array (iterar sobre el array, incluyendo indices):
 
-return array
 
-Fin bubble_sort
+            **revisar cual es mayor entre el actual y el anterior**
+
+            if element mayor que array[index-1] & index != 0:
+
+
+            **Si el actual es menor cambiar uno por otro y notificar que algo cambio**
+
+
+
+            cambiar de lugar element actual con el anterior.
+            cambio_alguno? = True
+
+            fin if
+    
+        fin for
+
+*** si no hay ningun cambio de posicion en la iteracion actual (while Loop), rompe el loop***
+
+    if cambio_alguno? == false:
+
+    salir del loop while
+
+fin while (fin codigo interno, realmente ese loop es infinito)
+
+print(array)
+
+retornar array
+
+fin proceso bubble_sort.
+    
+    
+
 ``` 
 
 Basicamente es un loop "infinito" con un break case specifico, que dentro de si tiene otro loop que itera sobre todos los elementos de un array, si el array ha mutado algun elemento de su posicion en la iteracion actual, el loop del primer nivel procedera a una nueva iteracion.
