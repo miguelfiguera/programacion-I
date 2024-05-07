@@ -5,7 +5,7 @@ def bubble_sort(array:list):
     #Numero de iteraciones posibles.
     num=len(array)-1
     #Loop de primer nivel para la cantidad de iteraciones
-    for x in range(num):
+    while True:
         #variable para determinar break-case
         swapped=False
         #loop de segundo nivel (nested loop) para cada elemento del array
