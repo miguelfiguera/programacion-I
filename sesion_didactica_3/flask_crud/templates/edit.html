@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+
+{% block title%} FlaskCrud - Edit Page {%endblock%}
+
+
+{% block body%}
+
+<h1 class="text-center">Edit To Do</h1>
+
+<div class="container d-flex justify-content-center">
+
+
+
+<form action="/edit-task/{{task.id}}" method="POST" class="border rounded p-3" style="width:450px;">
+    <h2 class="text-center">Edit a To Do</h2>
+
+    <div class="mb-3">
+        <label for="task-title" class="form-label">Task</label>
+        <input type="text" name="task_title_edit" class="form-control" id="task-title" value="{{task.title}}">
+      </div>
+      <div class="mb-3">
+        <label for="task-description" class="form-label">Description</label>
+        <textarea class="form-control" name="task_description_edit" id="task-description" rows="3" value="{{task.description}}">{{task.description}}</textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Task</button>
+
+
+</form>
+
+
+</div>
+
+
+{%endblock%}

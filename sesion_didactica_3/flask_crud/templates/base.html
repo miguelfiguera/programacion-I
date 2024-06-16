@@ -12,12 +12,21 @@
 </head>
 <body class="sp-n">
 
+  <h1 class="text-center my-4">To Do List:</h1>
+<h4>Total Tasks: {{list_tasks|length}}</h4>
+
     <!-- Layout for all the pages / Html base para todas las paginas-->
 
     <!-- Renderizado de los templates -->
     {%block body%}{%endblock%}
     
 
+
+
+    <footer class="container-fluid border-top mt-4">
+      <h5>Creado por: Miguel Figuera.</h5>
+      <h5>2024</h5>
+    </footer>
     <!-- Bootstrap 5.3 desde un cdn para no tener que instalarlo y mantener la app ligera //
       No recomendado para produccion, solo para desarrollo y proyectos de estudio.
       Puede afectar la experiencia de usuario en una aplicacion real.    
