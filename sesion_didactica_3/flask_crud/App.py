@@ -43,12 +43,15 @@ def create_task():
     db.session.commit()
     return redirect(url_for('index'))
 
+#define la ruta y la funcion para borrar tareas
 @app.route('/delete/<id>')
 def delete_task(id):
     Task.query.filter_by(id=int(id)).delete()
     db.session.commit()
     return redirect(url_for('index'))
 
+
+#define la funcion para actualizar tareas a complete==True exclusivamente.
 @app.route('/update/<id>')
 def update_task(id):
     task=Task.query.filter_by(id=int(id)).first()
@@ -57,11 +60,14 @@ def update_task(id):
     return redirect(url_for('index'))
 
 
+#define la ruta para editar titulo y texto de la tarea en un form renderizado en la ruta edit.
 @app.route('/edit/<id>')
 def edit_page(id):
     task=Task.query.filter_by(id=int(id)).first()
     return render_template('edit.html',task=task)
 
+
+#define la ruta para actualizar la base de datos y la funcion con los nuevos datos del formulario de /edit/<id>
 @app.route('/edit-task/<id>',methods=['POST'])
 def edit_task(id):
     task=Task.query.filter_by(id=int(id)).first()
