@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+
+
+{% block title%} Miguel Figuera Flask Crud {%endblock%}
+
+
+{% block body%}
+
+<h1 class="text-center my-4">To Do List:</h1>
+
+
+<div class="container d-flex justify-content-center">
+<form action="/create-task" method="POST" class="border rounded p-3" style="width:450px;">
+    <h2 class="text-center">Create a To Do</h2>
+
+    <div class="mb-3">
+        <label for="task-title" class="form-label">Task</label>
+        <input type="text" name="task_title" class="form-control" id="task-title" placeholder="Title...">
+      </div>
+      <div class="mb-3">
+        <label for="task-description" class="form-label">Description</label>
+        <textarea class="form-control" name="task_description" id="task-description" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save Task</button>
+
+
+</form>
+    
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="container">
+    <ul>
+        {% for task in list_tasks %} 
+        
+         <li class="border rounded p-3 my-4">
+             <h3 class="text-decoration-underline">To do: {{task.title}}</h3>
+             <p>Description: {{task.description}}</p>
+             <p>created at: {{task.create_at}}</p>
+             <p>completed?: <strong> {{task.complete}}</strong></p>
+             
+         </li>
+        
+        
+        
+        
+        {%endfor%}
+
+    </ul>
+
+
+{%endblock%}
